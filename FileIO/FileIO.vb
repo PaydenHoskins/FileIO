@@ -10,7 +10,7 @@ Option Strict On
 Module FileIO
 
     Sub Main()
-
+        WriteToFile()
     End Sub
 
     Sub WriteToFile()
