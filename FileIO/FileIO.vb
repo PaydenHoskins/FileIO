@@ -13,4 +13,10 @@ Module FileIO
 
     End Sub
 
+    Sub WriteToFile()
+
+        FileOpen(1, "MyCoolFile.txt", OpenMode.Output)
+
+    End Sub
+
 End Module
