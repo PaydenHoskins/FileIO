@@ -10,7 +10,12 @@ Option Strict On
 Module FileIO
 
     Sub Main()
-        WriteToFile()
+        'Commented out so we dont run them evr time.
+        'WriteToFile()
+        'AppendAFile()
+
+        ReadFromFile()
+
     End Sub
     ''' <summary>
     ''' Writes a predetermined string to the file that is being called. Replaces any previous lines before it.
@@ -19,7 +24,7 @@ Module FileIO
 
         FileOpen(1, "MyCoolFile.txt", OpenMode.Output)
 
-        Write(1, "Follow The White Rabbit...")
+        Write(1, " Follow The White Rabbit... ")
 
         FileClose(1)
 
@@ -31,11 +36,25 @@ Module FileIO
 
         FileOpen(1, "MyCoolFile.txt", OpenMode.Append)
         For i = 1 To 10
-            Write(1, "You are my sunshine, my only sunshine.")
+            Write(1, " You are my sunshine, my only sunshine. ")
         Next
 
         FileClose(1)
 
     End Sub
 
+    Sub ReadFromFile()
+        Dim currentRecord As String
+        Dim fileName As String = "MyCoolFile.txt"
+        Try
+            FileOpen(1, fileName, OpenMode.Input)
+            Input(1, currentRecord)
+
+            FileClose(1)
+            Console.WriteLine(currentRecord)
+        Catch ex As Exception
+            MsgBox($"oops! File{fileName} is not found.")
+        End Try
+
+    End Sub
 End Module
