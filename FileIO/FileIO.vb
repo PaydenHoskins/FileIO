@@ -17,6 +17,8 @@ Module FileIO
 
         FileOpen(1, "MyCoolFile.txt", OpenMode.Output)
 
+        FileClose(1)
+
     End Sub
 
 End Module
