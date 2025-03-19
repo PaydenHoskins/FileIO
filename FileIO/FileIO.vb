@@ -48,10 +48,11 @@ Module FileIO
         Dim fileName As String = "MyCoolFile.txt"
         Try
             FileOpen(1, fileName, OpenMode.Input)
-            Input(1, currentRecord)
-
+            Do Until EOF(1) 'Repeats till we have read all the file data.
+                Input(1, currentRecord)
+                Console.WriteLine(currentRecord)
+            Loop
             FileClose(1)
-            Console.WriteLine(currentRecord)
         Catch ex As Exception
             MsgBox($"oops! File{fileName} is not found.")
         End Try
