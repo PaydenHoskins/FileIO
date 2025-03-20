@@ -92,6 +92,12 @@ Module FileIO
         ' your system.
         WriteLine(1, aBool & " is a Boolean value.")
         WriteLine(1, aDate & " is a date.")
+
+        'Payden H. code add in
+        WriteLine(1)
+        Write(1, aBool)
+        Write(1, aDate)
+
         ' Close the file.
         FileClose(1)
     End Sub
@@ -104,7 +110,7 @@ Module FileIO
             Do Until EOF(1)
                 count += 1
                 Input(1, currentString)
-                Console.WriteLine($"The count is {count} and it says: {currentString}")
+                Console.WriteLine($"Record {CStr(count).PadLeft(3)} is {CStr(Len(currentString)).PadLeft(3)} characters long: {currentString}")
             Loop
             FileClose(1)
         Catch ex As Exception
