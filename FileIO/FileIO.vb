@@ -20,6 +20,8 @@ Module FileIO
         DocExample()
 
         ReadAllRecords()
+
+        Console.WriteLine(RecordCountIn("TestFile.txt"))
     End Sub
     ''' <summary>
     ''' Writes a predetermined string to the file that is being called. Replaces any previous lines before it.
@@ -117,4 +119,20 @@ Module FileIO
             MsgBox("This File you are looking for does not exist...")
         End Try
     End Sub
+
+    Function RecordCountIn(fileName As String) As Integer
+        Dim count As Integer
+        Try
+            FileOpen(1, fileName, OpenMode.Input)
+            Do Until EOF(1)
+                Input(1, "")
+                count += 1
+            Loop
+            FileClose()
+        Catch ex As Exception
+            count = -1
+            MsgBox($"Failed to Read From {fileName}...")
+        End Try
+        Return count
+    End Function
 End Module
